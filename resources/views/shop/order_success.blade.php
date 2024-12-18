@@ -10,7 +10,7 @@
                 <p>Đơn hàng của bạn dã được xác nhận <span style="font-weight: bold;color: rgb(73, 255, 7);">Thành Công!</span>! <br>
                     <span style="font-size: small;" >Chúng tôi sẽ <a style=" font-weight: bold; font-style: italic; color: blue;" href="https://mail.google.com">Giao Hàng</a> trong thời gian tối đa là 3 ngày làm việc</span></p>
                 <br>
-                <button class="mainbutton">Tiếp tục mua hàng</button>    
+               <a href="/shop" class="button">Tiếp tục mua hàng</a>
             </div>
         </div>
     </div> 

@@ -36,8 +36,8 @@ class EmailNotification extends Notification
     {
         return (new MailMessage)
                     ->greeting('Xin Chào Admin')
-                    ->line('Bạn đã nhận được một đơn hàng mới từ '.$this -> order)
-                    ->action('Notification Action', url('/'))
+                    ->line('Bạn đã nhận được một đơn hàng mới từ - '.$this -> order)
+                    ->action('Xem Danh Sách Đơn Hàng', url('/admin/order/list'))
                     ->line('Hãy kiểm tra lại đơn hàng nhé !');
     }
 

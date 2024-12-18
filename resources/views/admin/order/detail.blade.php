@@ -20,7 +20,7 @@
                                     @endphp
                                     @foreach ($products as $product)
                                     @php
-                                        $price = $product -> price_sale*$order_detail[$product -> id];
+                                        $price = $product -> price_sale * $order_detail[$product -> id];
                                         $total+=$price;
                                     @endphp
                                     <tr>
@@ -28,16 +28,17 @@
                                         <td><img style="width: 70px;" src="{{asset($product -> avatar)}}" alt=""></td>
                                         <td>{{$product -> name}}</td>                                
                                         <td>{{number_format($product -> price_sale)}}</td>
-                                        <td>{{number_format($price)}}</td>
                                         <td>{{$order_detail[$product -> id]}}</td>
+                                        <td>{{number_format($price)}}</td>
+                                        
                                         <td><a class="delete-class" href="">Xóa</a></td>                                       
                                     </tr>
                                     
                                     @endforeach
                                     <tr class="end-table">
                                         <td colspan="5">Tổng Cộng</td>
-                                        <td>{{number_format($total)}}</td>
-                                        <td></td>
+                                        <td colspan="2">{{number_format($total)}}</td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>

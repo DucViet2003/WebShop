@@ -35,6 +35,14 @@
                                 </div>
                             </ul>
                         </li>
+                        <li><a href=""><i class="ri-file-list-line"></i>Account<i class="ri-add-box-line"></i></a>
+                            <ul class="sub-menu">
+                                <div class="sub-menu-item">
+                                    <li><a href="/admin/account/list"><i class="ri-arrow-right-s-fill"></i>Danh Sách Account</a></li>
+                                    
+                                </div>
+                            </ul>
+                        </li>
                     </ul>
                     
                 </div>

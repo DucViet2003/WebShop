@@ -1,10 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\TestMail;
 use App\Models\order;
 use App\Models\products;
+use App\Notifications\EmailNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 class frontendController extends Controller
@@ -74,6 +80,7 @@ class frontendController extends Controller
         return redirect('/shop/cart');
     }
     public function send_cart(Request $request){
+        
         $token = Str::random(12);
         $order = new order;
         $order -> name = $request -> input('name');
@@ -86,15 +93,41 @@ class frontendController extends Controller
         $order -> note = $request -> input('note');
         $order_detail  = json_encode($request -> input('product_id'));
         $order -> order_deail = $order_detail;
-        $order -> token = $request -> $token;
+        $order -> token =  $token;
         $order -> save();
+        Session::flush('cart');
+        $mailinfo =  $order -> email ;
+        $nameinfo = $order -> name;
+        
+        $Mail = Mail::to($mailinfo) -> send(new TestMail($nameinfo));
+        // Notification::send($order, new EmailNotification($nameinfo));
+        Notification::route('mail', 'vietchymte@gmail.com')
+                ->notify(new EmailNotification($nameinfo));
+
         return redirect('/shop/order_confirm');
     }
-    public function show_orderconfirm(Request $request){
-        $order = order::find($request -> id);
-        return view('shop.order_confirm',[
-        'order' => $order
-        ]);
+    public function show_login(){
+        return view('login');
     }
+    public function check_login(Request $request){
+        if(Auth::attempt([
+            'email' => $request -> input('email'), 
+            'password' => $request -> input('password')
+        ]
+    ))
+    {
+        return redirect('admin');
+    }
+       return redirect()-> back();
     
+    ;
 }
+public function logout(Request $request) {
+    Auth::logout(); // Đăng xuất người dùng
+    $request->session()->invalidate(); // Xóa toàn bộ session
+    $request->session()->regenerateToken(); // Tạo lại CSRF token mới
+
+    return redirect('/login'); // Chuyển hướng về trang chủ hoặc trang đăng nhập
+}
+}
+

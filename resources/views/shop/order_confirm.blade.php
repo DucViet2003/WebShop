@@ -10,7 +10,7 @@
                 <p>Đơn hàng của bạn dã được gửi <span style="font-weight: bold;">Thành Công</span>! <br>
                     <span style="font-size: small;" >Vui lòng check <a style=" font-weight: bold; font-style: italic; color: blue;" href="https://mail.google.com">Email</a> đã đăng ký để xác nhận để xác nhận đơn hàng</span></p>
                 <br>
-                <button class="mainbutton">Tiếp tục mua hàng</button>    
+                <a href="/shop" class="button">Tiếp tục mua hàng</a>  
             </div>
         </div>
     </div> 

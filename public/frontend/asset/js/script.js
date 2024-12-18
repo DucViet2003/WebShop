@@ -108,6 +108,13 @@ for (let index = 0; index < quanPlus.length; index++) {
 }
 
 
+function updateCartCount() {
+    fetch('/cart/count')
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.cart-number').innerText = data.cartCount;
+        });
+}
 
    
 

@@ -16,6 +16,13 @@ class OrderController extends Controller
         'title' => 'Danh Sách Đơn Hàng'
         ]);
     }
+    public function delete_order(Request $request){
+        order::find($request -> order_id)->delete();
+        return response() -> json([
+            'success' => true
+        ]);
+    }
+   
     public function detail_order(Request $request){
         $order_detail = json_decode($request -> order_detail,true);
         $product_id = array_keys($order_detail);
@@ -24,6 +31,12 @@ class OrderController extends Controller
             'products' => $products,
             'order_detail' => $order_detail,
             'title' => 'Chi Tiết Đơn Hàng'
+        ]);
+    }
+    public function show_orderconfirm(Request $request){
+        $order = order::find($request -> id);
+        return view('shop.order_confirm',[
+        'order' => $order
         ]);
     }
 }

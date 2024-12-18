@@ -28,7 +28,7 @@
                                             <td><a class="edit-class" href="/admin/order/detail/{{$order -> order_deail}}">Xem</a></td>
                                             <td></td>
                                             <td><a class="none-confirm-order" href="">Chưa xác nhận</a></td>
-                                            <td><a class="delete-class" href="">Xóa</a></td>
+                                            <td><a onclick="removeRowOD(order_id=<?php echo $order -> id?>,url='/admin/order/delete')" class="delete-class" href="">Xóa</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
